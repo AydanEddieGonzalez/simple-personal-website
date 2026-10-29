@@ -1,0 +1,3 @@
+# original phone videos are too big for github, the site uses the converted .mp4 files
+*.mov
+*.MOV

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cofair · aydan gonzalez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Intel+One+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">aydan.</a>
+      <nav class="nav">
+        <a href="index.html#projects" class="nav-link" style="display:inline">back to home</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="study-intro">
+    <div class="container fade">
+      <p class="label">case study</p>
+      <h1>cofair</h1>
+      <div class="chips">
+        <span class="chip">student researcher</span>
+        <span class="chip">sept 2026 - now</span>
+        <span class="chip">uc berkeley data discovery</span>
+        <span class="chip">python · numpy · pandas</span>
+      </div>
+      <p class="summary">climate offsets for ai responsibility. donors share their spare ai credits so nonprofits can use them. i figured out how much cofair can take from each donor, and when to stop.</p>
+    </div>
+  </section>
+
+  <section class="container media fade">
+    <figure>
+      <div class="frame wide"><img src="images/cofair-home.jpg" alt="cofair homepage: make informed data center decisions with cofair"></div>
+      <figcaption>cofair: climate offsets for ai responsibility</figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== the problem ===== -->
+  <section class="section off">
+    <div class="container fade">
+      <p class="label">the problem</p>
+      <h2>borrowing</h2>
+      <div class="mission">
+        <p class="mission-text">donors share api keys with leftover capacity. we want to use as much as we can, but if we push someone past their budget, they get a surprise bill and probably never donate again.</p>
+        <ul class="checklist">
+          <li>how much can cofair use from each key?</li>
+          <li>how fast should that allowance open up?</li>
+          <li>when does cofair need to stop?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== donor rules ===== -->
+  <section class="section">
+    <div class="container fade">
+      <p class="label">what i built</p>
+      <h2>donor rules</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>fixed cap</h3>
+          <p>donor says $20 a month. we spend $20 and stop.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>excess capacity</h3>
+          <p>we use whatever's left over, without pushing them past their max.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>pacing</h3>
+          <p>how fast the allowance opens up: all at once, evenly, or saved for late in the month.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <h3>safety nets</h3>
+          <p>keep a buffer untouched, and take nothing the first 3 days until we know their habits.</p>
+        </div>
+      </div>
+      <p class="mission-text section-intro" style="margin-top: 32px; margin-bottom: 0;">routing just asks <code>can_route()</code> if a task fits on a key.</p>
+    </div>
+  </section>
+
+  <!-- ===== the simulation ===== -->
+  <section class="section off">
+    <div class="container fade">
+      <p class="label">testing the rules</p>
+      <h2>simulating a month of donors</h2>
+      <div class="mission">
+        <div>
+          <p class="mission-text">i simulated a month of steady, bursty, and ramping-up donors, 500 times each, with 10%, 20%, and 30% buffers.</p>
+          <ul class="checklist" style="margin-top: 24px;">
+            <li><b>steady donors:</b> no overruns either way. pacing not needed.</li>
+            <li><b>ramp-up donors:</b> no pacing overruns a lot. linear or backloaded gets it to 0%.</li>
+            <li><b>bursty donors:</b> backloaded wins: $26.44 a cycle at ~5% overruns, vs $24.30 linear and $20.74 none.</li>
+          </ul>
+        </div>
+        <figure>
+          <div class="frame contain chart"><img src="images/cofair-tradeoff.png" alt="chart of average dollars cofair used per cycle vs overrun rate for three pacing strategies with a bursty donor"></div>
+          <figcaption>bursty donors. each line is a pacing strategy, each dot a buffer size. up and left = more money, fewer overruns.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="writeup">
+    <div class="container fade">
+      <div>
+        <h2>what i did</h2>
+        <ul>
+          <li>built the forecast engine: donor rules, what's left to spend, and whether a task fits.</li>
+          <li>wrote a key validator for four ai providers.</li>
+          <li>built the pacing sim and buffer sweep with numpy and pandas.</li>
+          <li>wrote 25 unit tests.</li>
+          <li>set up a local db and squashed a usage-loading bug in the old codebase.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>what happened</h2>
+        <ul>
+          <li>backloaded pacing wins for bursty donors. steady ones don't need it.</li>
+          <li>poster at the data discovery symposium on dec 9.</li>
+          <li>made it into cofair's 2027 cohort.</li>
+          <li>next: smarter forecasts, dollars to tokens, and spreading usage fairly across donors.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="study-footer">
+    <div class="container">
+      <a href="index.html#projects">all projects</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

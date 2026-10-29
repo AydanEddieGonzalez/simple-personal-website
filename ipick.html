@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ipick.ai · aydan gonzalez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Intel+One+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">aydan.</a>
+      <nav class="nav">
+        <a href="index.html#projects" class="nav-link" style="display:inline">back to home</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="study-intro">
+    <div class="container fade">
+      <p class="label">case study</p>
+      <h1>ipick.ai</h1>
+      <div class="chips">
+        <span class="chip">ml &amp; swe intern</span>
+        <span class="chip">sept 2026 - now</span>
+        <span class="chip">nexus team</span>
+        <span class="chip">python · django · plaid</span>
+      </div>
+      <p class="summary">ipick is an ai stock research platform. this semester i'm on nexus, the student team building three new tools for it, and i've had my hands in all three.</p>
+    </div>
+  </section>
+
+  <!-- ===== the problem ===== -->
+  <section class="section off">
+    <div class="container fade">
+      <p class="label">the problem</p>
+      <h2>dealing with agents</h2>
+      <div class="mission">
+        <p class="mission-text">ipick had ai agents picking stocks, but nothing backing up their picks. no portfolios, no recommendations either. that is what i am working on.</p>
+        <ul class="checklist">
+          <li>no way to build or analyze a portfolio</li>
+          <li>no stock recommendation system</li>
+          <li>agents with no real logic behind their picks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== the three tools ===== -->
+  <section class="section">
+    <div class="container fade">
+      <p class="label">what i'm building</p>
+      <h2>the tools</h2>
+      <div class="steps three">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>portfolio analysis</h3>
+          <p>link your brokerage through plaid and ipick pulls in what you actually own.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>stock recommendations</h3>
+          <p>price history from yfinance, cleaned up in postgresql, turned into features that predict returns.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>rl stock picking</h3>
+          <p>an agent watches about 150 stocks, looks at the last month or two, and decides how much of each to hold. rebalances every two weeks.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== my part: plaid ===== -->
+  <section class="section off">
+    <div class="container fade">
+      <p class="label">portfolio analysis</p>
+      <h2>linking a brokerage account</h2>
+      <p class="mission-text section-intro">plaid lets you connect your brokerage without ever giving us your password. it's a token handoff across four django endpoints, and i worked on all four.</p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <span class="step-num">01 · connect</span>
+          <p>page loads the plaid widget.</p>
+        </div>
+        <div class="flow-step">
+          <span class="step-num">02 · link token</span>
+          <p>server grabs a short-lived link token so the login popup opens.</p>
+        </div>
+        <div class="flow-step">
+          <span class="step-num">03 · exchange</span>
+          <p>user logs in, and we swap their public token for a permanent one. that one never leaves the server.</p>
+        </div>
+        <div class="flow-step">
+          <span class="step-num">04 · holdings</span>
+          <p>pull stocks, etfs, and funds from every linked account into one list.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container media fade" style="padding-top: 96px;">
+    <figure>
+      <div class="frame wide"><img src="images/ipick-home.jpg" alt="the ipick.ai homepage: agentic ai for stock research and investments"></div>
+      <figcaption>ipick.ai: ai research on 6,000+ stocks and etfs</figcaption>
+    </figure>
+    <div class="media-row">
+      <figure>
+        <div class="frame contain"><img src="images/plaid-flow.jpg" alt="diagram of how plaid connects an app, the user's device, and their bank"></div>
+        <figcaption>where plaid fits in (diagram: dashdevs)</figcaption>
+      </figure>
+      <figure>
+        <div class="frame contain"><img src="images/rl-loop.jpg" alt="diagram of the reinforcement learning loop: agent, action, environment, reward"></div>
+        <figcaption>the rl loop: pick weights, see what the market does, learn from the returns</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="writeup">
+    <div class="container fade">
+      <div>
+        <h2>what i did</h2>
+        <ul>
+          <li><b>portfolio analysis:</b> built the plaid endpoints in django. tokens stay on the server, and if plaid breaks we return a clean 502.</li>
+          <li><b>stock recommendations:</b> pulled price history with yfinance, fixed ticker mismatches, and stored the clean stuff in postgresql.</li>
+          <li><b>feature engineering:</b> built indicators and return targets that only use past data.</li>
+          <li><b>rl stock picking:</b> designed what the agent sees and does, and dug into bandit algorithms like linucb.</li>
+          <li><b>evaluation:</b> figured out how to test it honestly so it's not just memorizing old data.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>what happened</h2>
+        <ul>
+          <li>presented at the mid-semester review.</li>
+          <li>wrapped the first round of rl research and started testing baselines.</li>
+          <li>got the data pipeline running despite yfinance rate limits and mismatched tickers.</li>
+          <li>next: build the best rl model and backtest everything.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="study-footer">
+    <div class="container">
+      <a href="index.html#projects">all projects</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

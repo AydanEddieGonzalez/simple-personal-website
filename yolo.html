@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yolo ornithopter tracker · aydan gonzalez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Intel+One+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">aydan.</a>
+      <nav class="nav">
+        <a href="index.html#projects" class="nav-link" style="display:inline">back to home</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="study-intro">
+    <div class="container fade">
+      <p class="label">case study</p>
+      <h1>yolo ornithopter tracker</h1>
+      <div class="chips">
+        <span class="chip">senior capstone</span>
+        <span class="chip">2025 - 2026</span>
+        <span class="chip">programming team</span>
+        <span class="chip">python · pytorch · yolo · tensorrt</span>
+      </div>
+      <p class="summary">my senior capstone. our student-run engineering company, arcturus industries, built corvus, which is a robot raven that flies, walks, and grabs stuff on its own for the 2026 carpa challenge. i was on programming, working on navigation and vision.</p>
+    </div>
+  </section>
+
+  <section class="container media fade">
+    <div class="media-main video">
+      <video src="videos/ornithopter-demo.mp4" poster="images/ornithopter-demo-poster.jpg" controls playsinline preload="metadata"></video>
+    </div>
+    <p class="caption">our team documentary. the bird, the mission, the lab.</p>
+    <div class="media-row">
+      <figure>
+        <div class="frame contain"><img src="images/corvus-assembly.jpg" alt="cad render of the full corvus assembly"></div>
+        <figcaption>full corvus assembly (cad)</figcaption>
+      </figure>
+      <figure>
+        <div class="frame"><img src="images/yolo-detection.jpg" alt="yolo object detection running on a live camera frame"></div>
+        <figcaption>yolo detecting objects on a live camera frame</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== the mission ===== -->
+  <section class="section off">
+    <div class="container fade">
+      <p class="label">the challenge</p>
+      <h2>build a robot raven</h2>
+      <div class="mission">
+        <p class="mission-text">brief: build an ornithopter (it flaps to fly) that looks like a raven and runs the whole mission by itself, with a kill switch just in case.</p>
+        <ul class="checklist">
+          <li>take off, fly, and land on a tower</li>
+          <li>walk on two legs</li>
+          <li>find items and carry them back to build a nest</li>
+          <li>use a stick as a tool</li>
+          <li>say "nevermore" in its handler's voice at the end</li>
+          <li>stay under 400 ft so the faa stays happy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== how navigation works ===== -->
+  <section class="section">
+    <div class="container fade">
+      <p class="label">the part i worked on</p>
+      <h2>how corvus finds its way</h2>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>know where it is</h3>
+          <p>rtk gps gets position down to centimeters. it lags a bit, so we fuse it with imu data in a kalman filter.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>see what's around</h3>
+          <p>yolo looks at each camera frame and says what's there, where, and how sure it is. weak guesses get tossed, and distance comes from box size.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <h3>remember it</h3>
+          <p>every find gets real coordinates and goes on a map with its point value.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">04</span>
+          <h3>plan a route</h3>
+          <p>a* picks the shortest path to the next item: distance so far + distance left.</p>
+        </div>
+      </div>
+      <div class="media-row diagrams">
+        <figure>
+          <div class="frame contain"><img src="images/rtk-gps.jpg" alt="diagram of rtk gps base station correcting the drone's position"></div>
+          <figcaption>rtk gps: the base station corrects the drone's position</figcaption>
+        </figure>
+        <figure>
+          <div class="frame contain"><img src="images/astar-grid.jpg" alt="a* pathfinding on a grid around obstacles"></div>
+          <figcaption>a* pathfinding around obstacles</figcaption>
+        </figure>
+      </div>
+      <div class="hardware">
+        <p class="small-label">hardware</p>
+        <div class="chips">
+          <span class="chip">arducam ar0234 camera</span>
+          <span class="chip">um960 rtk gnss</span>
+          <span class="chip">bno055 9-dof imu</span>
+          <span class="chip">esp32</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== build photos ===== -->
+  <section class="section off">
+    <div class="container fade">
+      <p class="label">in progress</p>
+      <h2>testing the hardware</h2>
+      <div class="media-row">
+        <figure>
+          <div class="frame"><img src="images/ornithopter02.png" alt="esp32 on a breadboard wired to an rtk gps module and antenna outdoors"></div>
+          <figcaption>the esp32 and rtk gps module, testing outside</figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="images/ornithopter01.png" alt="arduino ide showing control code and serial monitor output"></div>
+          <figcaption>checking code and serial output</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="writeup">
+    <div class="container fade">
+      <div>
+        <h2>what i did</h2>
+        <ul>
+          <li>built a two-stage pipeline: a light yolo model runs on the bird, and a heavier one checks its work.</li>
+          <li>used box corrections as the fix signal, same idea as rtk gps.</li>
+          <li>sped it up with tensorrt so it could keep up mid-flight.</li>
+          <li>worked with the beak, legs, and wings teams so everything actually fit together.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>what happened</h2>
+        <ul>
+          <li>survived five design reviews with industry experts.</li>
+          <li>ran the mission challenge on may 20, then showed off corvus at the expo on may 27.</li>
+          <li>detection ran at 30 fps on the bird.</li>
+          <li>mission was a half success with my section of the mission working properly.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="study-footer">
+    <div class="container">
+      <a href="index.html#projects">all projects</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
