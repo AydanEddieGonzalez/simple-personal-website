@@ -1,21 +1,3 @@
-// fades sections up as you scroll to them
-const faders = document.querySelectorAll(".fade");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  faders.forEach((el) => observer.observe(el));
-} else {
-  faders.forEach((el) => el.classList.add("show"));
-}
-
 // fills the hevy card from hevy.json (a github action updates that file daily)
 function daysAgo(dateString) {
   const days = Math.floor((Date.now() - new Date(dateString)) / 86400000);

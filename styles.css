@@ -148,6 +148,7 @@ img, video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .section.off { background: var(--off); }
 .section.warm { background: var(--warm); }
 .label { font-size: 16px; font-weight: 500; color: var(--header); margin-bottom: 6px; }
+.tiny { background: var(--mint); padding: 0 10px; border-radius: 8px; }
 .section h2 { font-size: clamp(32px, 4vw, 48px); color: var(--dark); line-height: 1.2; margin-bottom: 44px; }
 
 /* ---------- project cards ---------- */
@@ -195,7 +196,20 @@ img, video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .chip.light { background: var(--off); }
 
 /* ---------- about ---------- */
-.about-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.about-cols { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: start; }
+.about-left h3 { margin-top: 12px; }
+.stack {
+  background: var(--mint);
+  color: var(--dark);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.9;
+}
+.stack span { white-space: nowrap; }
+.stack .dot { color: var(--header); }
+.about-photo { aspect-ratio: 4 / 3; border-radius: 20px; overflow: hidden; background: var(--sage); border: 6px solid var(--green); }
 .about-text p { font-size: 20px; line-height: 1.6; margin-bottom: 20px; }
 .about-cols h3 { font-size: 24px; color: var(--dark); margin-bottom: 18px; }
 
@@ -327,15 +341,21 @@ figcaption { font-size: 15px; color: var(--header); }
   padding: 4px 10px;
   border-radius: 999px;
 }
-.hardware .small-label { margin-bottom: 12px; }
+.hardware .small-label { margin-bottom: 8px; }
+.hardware .meta { background: none; padding: 0; font-weight: 400; }
 
-/* ---------- fade up on scroll ---------- */
-.fade { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade.show { opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce) {
-  .fade { opacity: 1; transform: none; transition: none; }
-  html { scroll-behavior: auto; }
+/* ---------- green bar (tech stack + project tags) ---------- */
+.meta {
+  display: inline-block;
+  background: var(--mint);
+  color: var(--dark);
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
 }
+.study-intro .meta { background: none; padding: 0; margin-top: 4px; color: var(--header); }
 
 /* ---------- phones + tablets ---------- */
 @media (max-width: 900px) {
@@ -346,6 +366,7 @@ figcaption { font-size: 15px; color: var(--header); }
   .steps, .flow { grid-template-columns: 1fr 1fr; }
   .steps.three { grid-template-columns: 1fr; }
   .about-cols { gap: 40px; }
+  .about-photo { max-width: 360px; }
   .more { flex-direction: column; align-items: flex-start; padding: 28px; }
   .section { padding: 72px 0; }
   .site-footer .container { flex-direction: column; align-items: flex-start; }
