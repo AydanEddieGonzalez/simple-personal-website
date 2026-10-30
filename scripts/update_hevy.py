@@ -71,6 +71,17 @@ out = {
     "recent": recent,
 }
 
+# only save when the stats actually changed, so we don't commit (and redeploy) every hour
+try:
+    with open("hevy.json") as f:
+        old = json.load(f)
+except (FileNotFoundError, json.JSONDecodeError):
+    old = {}
+
+if {k: v for k, v in old.items() if k != "updated"} == {k: v for k, v in out.items() if k != "updated"}:
+    print("no new workouts, leaving hevy.json alone")
+    raise SystemExit(0)
+
 with open("hevy.json", "w") as f:
     json.dump(out, f, indent=2)
 
