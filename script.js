@@ -15,7 +15,7 @@ if (recentBox) {
       document.getElementById("hevy-total").textContent = data.workout_count;
       document.getElementById("hevy-week").textContent = data.this_week;
       document.getElementById("hevy-streak").textContent = data.streak_weeks;
-      document.getElementById("hevy-updated").textContent = "from hevy · updated " + daysAgo(data.updated);
+      document.getElementById("hevy-updated").textContent = "from hevy | updated " + daysAgo(data.updated);
 
       recentBox.innerHTML = "";
       data.recent.forEach((w) => {
@@ -23,7 +23,7 @@ if (recentBox) {
         row.className = "workout";
         row.innerHTML = "<div><b></b><span></span></div><small></small>";
         row.querySelector("b").textContent = w.title.toLowerCase();
-        row.querySelector("span").textContent = w.exercises + " exercises · " + w.minutes + " min";
+        row.querySelector("span").textContent = w.exercises + " exercises | " + w.minutes + " min";
         row.querySelector("small").textContent = daysAgo(w.date);
         recentBox.appendChild(row);
       });

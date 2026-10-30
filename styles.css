@@ -148,7 +148,7 @@ img, video { display: block; width: 100%; height: 100%; object-fit: cover; }
 .section.off { background: var(--off); }
 .section.warm { background: var(--warm); }
 .label { font-size: 16px; font-weight: 500; color: var(--header); margin-bottom: 6px; }
-.tiny { background: var(--mint); padding: 0 10px; border-radius: 8px; }
+.tiny { background: var(--mint); padding: 0 8px; border-radius: 8px; font-size: 0.65em; }
 .section h2 { font-size: clamp(32px, 4vw, 48px); color: var(--dark); line-height: 1.2; margin-bottom: 44px; }
 
 /* ---------- project cards ---------- */
