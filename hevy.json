@@ -1,9 +1,15 @@
 {
-  "updated": "2026-11-13T12:29:29.019115-08:00",
-  "workout_count": 197,
-  "this_week": 3,
+  "updated": "2026-11-14T10:44:18.770134-08:00",
+  "workout_count": 198,
+  "this_week": 4,
   "streak_weeks": 15,
   "recent": [
+    {
+      "title": "Push",
+      "exercises": 6,
+      "minutes": 50,
+      "date": "2026-11-13T23:59:35+00:00"
+    },
     {
       "title": "Pull",
       "exercises": 5,
@@ -15,12 +21,6 @@
       "exercises": 2,
       "minutes": 37,
       "date": "2026-11-10T23:55:44+00:00"
-    },
-    {
-      "title": "Push",
-      "exercises": 6,
-      "minutes": 48,
-      "date": "2026-11-10T03:39:18+00:00"
     }
   ]
 }
