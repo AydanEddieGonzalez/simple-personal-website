@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>physaflow | aydan gonzalez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Intel+One+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">aydan.</a>
+      <nav class="nav">
+        <a href="index.html#projects" class="nav-link" style="display:inline">back to home</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="study-intro">
+    <div class="container">
+      <h1>physaflow</h1>
+      <p class="meta">sustainability metrics &amp; impact associate | nov 2026 - now | remote | python | gemini api | excel</p>
+      <p class="summary">i help the research team measure sustainability impact. so far that's meant two things: a pipeline that uses ai to screen research sources, and a model estimating how much emissions get avoided out to 2050.</p>
+    </div>
+  </section>
+
+  <!-- ===== what i built ===== -->
+  <section class="section off">
+    <div class="container">
+      <p class="label">what i built</p>
+      <h2>two tools</h2>
+      <div class="steps two">
+        <div class="step">
+          <span class="step-num">01</span>
+          <h3>research screening</h3>
+          <p>a python pipeline that pulls papers from openalex and semantic scholar, then has gemini grade them. it got screening down to about 10 minutes per topic block.</p>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <h3>emissions model</h3>
+          <p>an excel model estimating avoided embodied and operational emissions across 2 u.s. grid scenarios through 2050.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== keeping humans in the loop ===== -->
+  <section class="section">
+    <div class="container">
+      <p class="label">the important part</p>
+      <h2>ai grades, humans decide</h2>
+      <div class="mission">
+        <p class="mission-text">letting an llm decide which research counts is risky. so nothing the pipeline grades goes straight in. every source lands as a draft row that a person reviews first.</p>
+        <ul class="checklist">
+          <li>100% of llm-graded sources get human review</li>
+          <li>configurable filters to exclude junk sources</li>
+          <li>fixed api rate-limit bottlenecks so it actually runs fast</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="writeup">
+    <div class="container">
+      <div>
+        <h2>what i did</h2>
+        <ul>
+          <li>built the screening pipeline on the openalex, semantic scholar, and gemini apis.</li>
+          <li>designed the draft-row output with configurable exclusion filters, so a human signs off on every source.</li>
+          <li>built the emissions model: an embodied-carbon estimate from 4+ sources, s-curve adoption, and uncertainty analysis.</li>
+        </ul>
+      </div>
+      <div>
+        <h2>what happened</h2>
+        <ul>
+          <li>screening takes about 10 minutes per topic block.</li>
+          <li>presented v1 of the pipeline to research leadership.</li>
+          <li>the emissions model covers 2 u.s. grid scenarios out to 2050.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="study-footer">
+    <div class="container">
+      <a href="index.html#projects">all projects</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

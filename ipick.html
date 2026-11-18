@@ -23,7 +23,7 @@
   <section class="study-intro">
     <div class="container">
       <h1>ipick.ai</h1>
-      <p class="meta">ml/swe intern | sept 2026 - now | python | django | plaid</p>
+      <p class="meta">ml/swe intern | sept 2026 - now | cupertino, ca | python | django | claude + openai apis</p>
       <p class="summary">ipick is an ai stock research platform. this semester i'm on nexus, the student team building three new tools for it, and i've had my hands in all three.</p>
     </div>
   </section>
@@ -63,7 +63,7 @@
         <div class="step">
           <span class="step-num">03</span>
           <h3>rl stock picking</h3>
-          <p>an agent watches about 150 stocks, looks at the last month or two, and decides how much of each to hold. rebalances every two weeks.</p>
+          <p>an agent ranks 5,000+ stocks, flagging high-growth and high-risk picks, and learns from how they actually perform each week.</p>
         </div>
       </div>
     </div>
@@ -119,10 +119,11 @@
       <div>
         <h2>what i did</h2>
         <ul>
+          <li><b>portfolio optimizer:</b> building an llm-powered tool on the claude and openai apis that turns your holdings into risk-weighted recommendations.</li>
           <li><b>portfolio analysis:</b> built the plaid endpoints in django. tokens stay on the server, and if plaid breaks we return a clean 502.</li>
           <li><b>stock recommendations:</b> pulled price history with yfinance, fixed ticker mismatches, and stored the clean stuff in postgresql.</li>
           <li><b>feature engineering:</b> built indicators and return targets that only use past data.</li>
-          <li><b>rl stock picking:</b> designed what the agent sees and does, and dug into bandit algorithms like linucb.</li>
+          <li><b>rl stock picking:</b> built a ranking system for 5,000+ stocks trained on weekly performance feedback, and dug into bandit algorithms like linucb.</li>
           <li><b>evaluation:</b> figured out how to test it honestly so it's not just memorizing old data.</li>
         </ul>
       </div>
